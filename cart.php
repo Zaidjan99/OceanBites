@@ -1,3 +1,6 @@
+<?php
+ $con = mysqli_connect('localhost','root','','oceanbites');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,40 +77,39 @@
 
 
 
-
-
-
-
-
-
         <table class="table" >
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
                 <!-- <th scope="col">Last</th> -->
-                <th scope="col">Handle</th>
+                <th scope="col">Price</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <!-- <td>Otto</td> -->
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <!-- <td>Thornton</td> -->
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <!-- <td>the Bird</td> -->
-                <td>@twitter</td>
-              </tr>
+        
+
+<?php
+    $con = mysqli_connect("localhost", "root", "", "oceanbites");
+    $fetch = "SELECT * FROM `additems`";
+    $sql = mysqli_query($con, $fetch);
+    if ($sql) {
+        while ($row = mysqli_fetch_assoc($sql)) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $price = $row['price'];
+            echo "
+            <tr>
+            <th scope='row'>".$id."</th>
+            <td>".$name."</td>
+            <td>".$price."</td>
+          </tr>
+          <tr>";
+        }
+}
+?>
+
+
             </tbody>
           </table>
 
